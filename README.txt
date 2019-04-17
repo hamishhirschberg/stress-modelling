@@ -4,6 +4,7 @@ Instructions on how to calculate total stress, including gravitational and bound
 
 Codes written by Hamish Hirschberg.
 Citation: Hirschberg, H. P., S. Lamb, M. K. Savage (2018). Strength of an obliquely convergent plate boundary: lithospheric stress magnitudes and viscosity in New Zealand. Geophysical Journal International.
+Based on the method of Flesch et al. (2001).
 
 INTRODUCTION TO CODES:
 moho2gpe.m calculates the vertically averaged gravitational potential energy (GPE) from topography and crustal structure.
@@ -13,17 +14,15 @@ tot_stress.m calculates the total deviatoric stress.
 stress_calc.m runs the above code using a script intended to be edited by the user.
 
 HOW TO USE CODES:
-The codes are written as functions in matlab and are designed to be used as functions in the script 'stress_calc.m' or in the matlab command window. The inputs and outputs are designed to work with either GMT or Matlab.
+The codes are written as functions in Matlab and are designed to be used as functions in the script 'stress_calc.m' or in the Matlab command window. The inputs and outputs are designed to work with either GMT or Matlab.
 The example inputs provided are:
 topo.xyz - topographic elevation in m
 moho.xyz - crustal thickness/depth to Moho in km
 vel.xyz  - velocities (east and north) in mm/yr
-The example outputs produced are:
-
 
 NOTES ON CONVENTIONS:
 Extension is taken as positive.
-The magnitude is taken as the square-root of the second invariant, i.e. sqrt(sum(s_ij*s_ij)/2) summed over i and j.
+The magnitude for stress and strain rate is taken as the square-root of the second invariant, i.e. sqrt(sum(s_ij*s_ij)/2) summed over i and j.
 Effective viscosity is calculated as total deviatoric stress magnitude divided by strain rate magnitude, i.e. T/E.
 
 ************************************************************************
