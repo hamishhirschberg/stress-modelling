@@ -1,6 +1,6 @@
 README
 
-Instructions on how to calculate total stress, including gravitational and boundary stresses, from topography, crustal structure, and geodetic velocities using a sequence of Matlab programs.
+Instructions on how to calculate total deviatoric stress, including gravitational and boundary stresses, from topography, crustal structure, and geodetic velocities using a sequence of Matlab programs.
 
 Codes written by Hamish Hirschberg.
 Citation: Hirschberg, H. P., S. Lamb, M. K. Savage (2018). Strength of an obliquely convergent plate boundary: lithospheric stress magnitudes and viscosity in New Zealand. Geophysical Journal International.
