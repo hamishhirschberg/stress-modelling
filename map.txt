@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -u
+set -e
+
+OUTPUT="map$1.ps"
+REGION=165.5/180/-47/-36
+SPACING=0.5
+DATA="tot$1.xyz"
+GRID=tot.grd
+COL=tot.cpt
+
+echo $0
+
+# initialise region
+psxy -R$REGION -JM12 -Xc -Yc -K -T > $OUTPUT
+
+awk '{if($6=="NaN") print $1, $2, "NaN"; else print $1, $2, 0}' $DATA |
+	xyz2grd -Gmask.grd -I$SPACING -R
+
+makecpt -Cno_green -Z -T0/50/0.5 --COLOR_NAN=white > $COL			# create colour pallet
+
+# create grid file
+awk '{print $1, $2, $6}' $DATA | xyz2grd -G$GRID -R$REGION -I$SPACING
+grdmath mask.grd $GRID ADD = $GRID
+grdview $GRID -R -J -O -K -C$COL -Qs >> $OUTPUT	# plot grd file as colours
+
+pscoast -R -J -W -Df -O -K >> $OUTPUT		# coastline
+
+grdcontour $GRID -R -J -O -K -A10+g+s12 -Gd2.5c -C2 >>$OUTPUT	# plot grd file as contours
+
+pslegend <<END -D180/-47/7.5/1.5/br -F -G255 -R -J -K -O >>$OUTPUT
+B $COL 0.5 0.5 -B20
+END
+	
+psbasemap -R -J -Bf2a4WSne -K -O >> $OUTPUT 			#Border
+
+psxy -R$REGION -J -O -T >> $OUTPUT		# finish map
+rm $COL $GRID mask.grd
+
+gv  $OUTPUT
