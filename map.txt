@@ -18,7 +18,7 @@ psxy -R$REGION -JM12 -Xc -Yc -K -T > $OUTPUT
 awk '{if($6=="NaN") print $1, $2, "NaN"; else print $1, $2, 0}' $DATA |
 	xyz2grd -Gmask.grd -I$SPACING -R
 
-makecpt -Cno_green -Z -T0/50/0.5 --COLOR_NAN=white > $COL			# create colour pallet
+makecpt -Cno_green -Z -T0/50/0.5 --COLOR_NAN=white > $COL			# create colour palette
 
 # create grid file
 awk '{print $1, $2, $6}' $DATA | xyz2grd -G$GRID -R$REGION -I$SPACING
