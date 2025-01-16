@@ -145,7 +145,7 @@ etau=2*epsd(:,:,1).*taut(:,:,1)+taut(:,:,1).*epsd(:,:,2)+taut(:,:,2).*epsd(:,:,1
     2*epsd(:,:,2).*taut(:,:,2)+2*taut(:,:,3).*epsd(:,:,3);
 
 mis=(1-etau./(2*E.*T))/2;     % calculate misfit
-eta=T./E;               % calculate effective viscosity
+eta=0.5*T./E;               % calculate effective viscosity
 
 if nargout>=1
     varargout{1}=taut;                      % output total stress
