@@ -23,7 +23,7 @@ vel.xyz  - velocities (east and north) in mm/yr
 NOTES ON CONVENTIONS:
 Extension is taken as positive.
 The magnitude for stress and strain rate is taken as the square-root of the second invariant, i.e. sqrt(sum(s_ij*s_ij)/2) summed over i and j.
-Effective viscosity is calculated as total deviatoric stress magnitude divided by strain rate magnitude, i.e. T/E.
+Effective viscosity is calculated as total deviatoric stress magnitude divided by strain rate magnitude, i.e. 0.5*T/E.
 
 ************************************************************************
 FULL WORKFLOW SCRIPT - stress_calc.m
